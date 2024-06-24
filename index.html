@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Rock Paper Scissors</title>
+		<link rel="stylesheet" href="index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div id="mainPage" style="display: block">
+			<!--  -->
+			<!--Player win outer Circle -->
+			<!--  -->
+			<div id="concentricCircleMywin" style="display: none" class="concentricCircleMywin">
+				<div class="concentricCircle1"></div>
+				<div class="concentricCircle2"></div>
+				<div class="concentricCircle3"></div>
+			</div>
+
+			<!--  -->
+			<!--Computer win outer Circle -->
+			<!--  -->
+
+			<div
+				id="concentricCircleComputerWin"
+				style="display: none"
+				class="concentricCircleComputerWin"
+			>
+				<div class="concentricCircle1"></div>
+				<div class="concentricCircle2"></div>
+				<div class="concentricCircle3"></div>
+			</div>
+			<div class="mainDiv">
+				<!--  -->
+				<!-- Score Page -->
+				<!--  -->
+				<div class="scoreDiv">
+					<div class="scoreDivText">
+						<div>ROCK</div>
+						<div>PAPER</div>
+						<div>SCISSORS</div>
+					</div>
+					<div class="scoreDivShow">
+						<div class="scoreDivShowNumber">
+							<div class="scoreDivShowNumberText">COMPUTER</div>
+							<div class="scoreDivShowNumberText">SCORE</div>
+							<div id="computer_score" class="scoreDivShowNumberNum"></div>
+						</div>
+						<div class="scoreDivShowNumber">
+							<div class="scoreDivShowNumberText">YOUR</div>
+							<div class="scoreDivShowNumberText">SCORE</div>
+							<div id="player_score" class="scoreDivShowNumberNum"></div>
+						</div>
+					</div>
+				</div>
+
+				<!--  -->
+				<!-- Each play Result Page -->
+				<!--  -->
+				<div style="display: none" id="playingDiv" class="playingDivv">
+					<div id="firstPlayingDiv" class="firstPlayingDiv">
+						<span class="pickedText">YOU PICKED</span>
+						<img
+							style="width: 40px; height: 40px; margin-top: 18px; margin-left: 20px"
+							id="firstPlayingDivImage"
+							src=""
+							alt=""
+						/>
+					</div>
+					<div class="secondPlayingDiv">
+						<div id="youWin" class="youWin"></div>
+						<div id="againstPC" class="againstPC"></div>
+						<div id="playAgain" class="playAgain">PLAY AGAIN</div>
+					</div>
+					<div id="thirdPlayingDiv" class="thirdPlayingDiv">
+						<span class="pickedText">PC PICKED</span>
+						<img
+							class="thirdPlayingDivImage"
+							id="thirdPlayingDivImage"
+							style="width: 40px; height: 40px; margin-top: 18px; margin-left: 20px"
+							src=""
+							alt=""
+						/>
+					</div>
+				</div>
+
+				<!--  -->
+				<!-- Each play Result Page -->
+				<!--  -->
+				<div id="maiddleDiv" class="middleDiv">
+					<div class="circleDiv">
+						<div style="display: flex">
+							<div
+								onclick="clickHandler(event)"
+								id="cicle1"
+								class="circleDivInner circleDivInner2"
+							>
+								<img
+									id="imageIcons"
+									name="rock"
+									class="imageIcons"
+									src="images/gr21.png"
+									alt=""
+								/>
+							</div>
+							<div
+								onclick="clickHandler(event)"
+								id="cicle2"
+								class="circleDivInner circleDivInner3"
+							>
+								<img
+									id="imageIcons"
+									name="scissors"
+									class="imageIcons"
+									src="images/gr31.png"
+									alt=""
+								/>
+							</div>
+						</div>
+						<div
+							onclick="clickHandler(event)"
+							id="cicle3"
+							class="circleDivInner circleDivInner1"
+						>
+							<img
+								id="imageIcons"
+								name="paper"
+								class="imageIcons"
+								src="images/gr11.png"
+								alt=""
+							/>
+						</div>
+					</div>
+					<div class="triagnle">
+						<img class="firstImage" src="./images/line3.png" alt="" />
+
+						<img class="secondImage" src="./images/line1.png" alt="" />
+						<img class="lastImage" src="./images/line2.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--  -->
+		<!-- Result Page -->
+		<!--  -->
+		<div id="resultPage" style="display: none" class="resultPage">
+			<div>
+				<img class="hurrayImage" src="./images/hurray.png" alt="" />
+				<img class="cupImage" src="./images/cup.png" alt="" />
+			</div>
+			<div class="hurrayText">HURRAY!!</div>
+			<div id="youWonGame" class="youWonGame"></div>
+			<div id="playAgainLower" class="playAgainText">PLAY AGAIN</div>
+		</div>
+
+		<!--  -->
+		<!-- Implementation of Rule Card -->
+		<!--  -->
+		<div style="display: none" id="mainRuleCard" class="mainRuleCard">
+			<div class="rulesCard">
+				<h1 class="rulesCardTitle">Game Rules</h1>
+				<div class="rulesCardInner">
+					<div class="rulesCardYellow"></div>
+					<div>
+						<p>Rock beats scissors, scissors beat paper, and paper beats rock.</p>
+					</div>
+				</div>
+				<div class="rulesCardInner">
+					<div class="rulesCardYellow"></div>
+					<div>
+						<p>
+							Agree ahead of time whether you’ll count off “rock, paper, scissors, shoot” or
+							just “rock, paper, scissors.”
+						</p>
+					</div>
+				</div>
+				<div class="rulesCardInner">
+					<div class="rulesCardYellow"></div>
+					<div>
+						<p>
+							Use rock, paper, scissors to settle minor decisions or simply play to pass the
+							time
+						</p>
+					</div>
+				</div>
+				<div class="rulesCardInner">
+					<div class="rulesCardYellow"></div>
+					<div>
+						<p>If both players lay down the same hand, each player lays down another hand</p>
+					</div>
+				</div>
+			</div>
+			<div onclick="handleCancelRuleCard()" class="cancelRuleCard"></div>
+			<div onclick="handleCancelRuleCard()">
+				<img class="xCardImage" src="images/x.png" alt="" />
+			</div>
+		</div>
+
+		<!-- Lower div for NEXT And Rule card -->
+		<div class="lowerDiv">
+			<div onclick="handleCancelRuleCard()" id="rulesId" class="rules">RULES</div>
+			<div onclick="handleNextPage()" id="next" class="next">NEXT</div>
+		</div>
+		<script src="./game.js"></script>
+	</body>
+</html>

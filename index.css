@@ -1,0 +1,398 @@
+body {
+	background-color: #89c15e;
+	width: 1500px;
+}
+.mainDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.scoreDiv {
+	padding: 10px;
+	width: 900px;
+	height: 150px;
+	border: 2px solid #ffffff;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 10px;
+}
+.scoreDivText {
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 50px;
+	color: #ffffff;
+}
+
+.scoreDivShow {
+	height: 140px;
+	width: 350px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.scoreDivShowNumber {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #ffffff;
+	height: 140px;
+	width: 140px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.scoreDivShowNumberText {
+	padding-top: 5px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 19px;
+	letter-spacing: 10%;
+	color: #656565;
+	text-align: center;
+	padding: 5px;
+}
+.scoreDivShowNumberNum {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 70px;
+	line-height: 80px;
+	color: #252525;
+	text-align: center;
+}
+
+.middleDiv {
+	margin-top: 10px;
+	width: 900px;
+	height: 450px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: translateX(-130px);
+}
+
+.triagnle {
+	position: relative;
+	transform: rotate(180deg);
+}
+.triagnleLine {
+	position: absolute;
+}
+
+.firstImage {
+	/* transform: translateX(10px); */
+	transform-origin: left;
+	transform: translate(90px, 0px) rotate(-120deg) scaleY(1.8);
+}
+.lastImage {
+	/* transform-origin: left; */
+	transform: translate(-45px, -30px) rotate(-57deg) scaleY(1.8);
+}
+.secondImage {
+	transform: scaleX(1.8);
+}
+
+.pickedText {
+	position: fixed;
+	top: 300px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 12%;
+	color: #ffffff;
+}
+.groupIcons {
+	position: absolute;
+}
+
+.groupIconsImage {
+	width: 70px;
+	height: 70px;
+}
+
+.circleDivInner {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 10;
+}
+
+.circleDivInner1 {
+	top: 18px;
+	left: 303px;
+	border: 12px solid #ffa943;
+}
+.circleDivInner2 {
+	top: 8px;
+	left: 380px;
+	border: 12px solid #bd00ff;
+}
+.circleDivInner3 {
+	top: 8px;
+	left: 100px;
+	border: 12px solid #0074b6;
+}
+.imageIcons {
+	width: 40px;
+	height: 40px;
+	transform: translate(20px, 21px);
+}
+
+.lowerDiv {
+	position: absolute;
+	bottom: 20px;
+	width: 1500px;
+	display: flex;
+	justify-content: right;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 25px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.mainRuleCard {
+	position: absolute;
+	display: flex;
+	margin-left: 1100px;
+	margin-top: -420px;
+	z-index: 100;
+}
+
+.rulesCard {
+	/* position: absolute; */
+	width: 300px;
+	height: 350px;
+	border-radius: 15px;
+	border: 5px solid #ffffff;
+	background-color: #004429;
+}
+
+.cancelRuleCard {
+	width: 70px;
+	height: 70px;
+	border: 5px solid #ffffff;
+	background-color: #ff0000;
+	border-radius: 50%;
+	transform: translate(-50px, -40px);
+}
+
+.xCardImage {
+	z-index: 130;
+	transform: translate(-100px, -18px);
+}
+
+.rulesCardTitle {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 35px;
+	color: #ffffff;
+	text-align: center;
+}
+.rulesCardInner {
+	display: flex;
+	align-items: center;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #ffffff;
+}
+
+.rulesCardYellow {
+	width: 10px;
+	height: 10px;
+	background-color: #ffd600;
+	margin: 15px;
+}
+
+.rules {
+	width: 80px;
+	height: 30px;
+	margin-right: 30px;
+	border: 2px solid #ffffff;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.next {
+	width: 80px;
+	height: 30px;
+	margin-right: 60px;
+	border: 2px solid #ffffff;
+	border-radius: 10px;
+}
+.playingDivv {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 1500px;
+	height: 450px;
+}
+
+.firstPlayingDiv {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 10;
+	padding: auto;
+}
+
+.thirdPlayingDiv {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 10;
+	border: 12px solid #0074b6;
+}
+.secondPlayingDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.youWin {
+	font-family: "Roboto", sans-serif;
+	font-weight: 800;
+	font-size: 40px;
+	line-height: 45px;
+	color: #ffffff;
+}
+
+.againstPC {
+	font-family: "Roboto", sans-serif;
+	font-weight: 800;
+	font-size: 25px;
+	line-height: 30px;
+	color: #ffffff;
+	margin-top: 5px;
+}
+
+.playAgain {
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 18px;
+	color: #6b6b6b;
+	margin-top: 5px;
+	width: 140px;
+	height: 30px;
+	padding-top: 10px;
+	border-radius: 7px;
+	text-align: center;
+	background-color: #ffffff;
+}
+
+.concentricCircleMywin {
+	position: relative;
+	top: 400px;
+	right: 415px;
+}
+.concentricCircleComputerWin {
+	position: fixed;
+	top: 420px;
+	left: 0px;
+	left: 1180px;
+}
+.concentricCircle1 {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: #2e9a2563;
+	opacity: 1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.concentricCircle2 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: #2e9a2563;
+	opacity: 7;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.concentricCircle3 {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	background-color: #2e9a2563;
+	opacity: 0.5;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.resultPage {
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 800px;
+	height: 680px;
+	margin-left: 470px;
+}
+.cupImage {
+	position: relative;
+	transform: translateX(-320px);
+}
+.hurrayImage {
+	position: relative;
+	transform: translateX(50px);
+}
+.hurrayText {
+	margin-top: 20px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 90px;
+	line-height: 105px;
+	color: #ffffff;
+	text-align: center;
+	margin-left: -140px;
+}
+.youWonGame {
+	margin-top: 20px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 38px;
+	line-height: 47px;
+	color: #ffffff;
+	margin-left: 75px;
+}
+
+.playAgainText {
+	transform: translateY(80px);
+	margin-top: 20px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 20px;
+	color: #6b6b6b;
+	background-color: white;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	padding-top: 10px;
+	border-radius: 9px;
+	margin-left: 220px;
+}
