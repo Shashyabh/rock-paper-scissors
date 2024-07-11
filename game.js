@@ -1,27 +1,23 @@
+// Initialize scores from localStorage or default to 0
 let playerScore = localStorage.getItem("player_score")
-	? Number(localStorage.getItem("playerScore"))
+	? Number(localStorage.getItem("player_score"))
 	: 0;
 let computerScore = localStorage.getItem("computer_score")
-	? Number(localStorage.getItem("computerScore"))
+	? Number(localStorage.getItem("computer_score"))
 	: 0;
 
+// Function to generate computer's choice
 function computerPlay() {
 	const choices = ["rock", "paper", "scissors"];
 	return choices[Math.floor(Math.random() * 3)];
 }
 
+// Hide 'Next' button if scores are both 0 initially
 if (playerScore === 0 && computerScore === 0) {
 	document.getElementById("next").style.display = "none";
 }
 
-const computer_style = [
-	{
-		rock: "cicle1",
-		paper: "cicle2",
-		scissors: "cicle3",
-	},
-];
-
+// Handle click events on player's choice
 function clickHandler(event) {
 	var ele = event.target;
 	let computerChoice = computerPlay();
@@ -32,7 +28,8 @@ function clickHandler(event) {
 		alert("Please click on Middle of Box Image");
 	} else {
 		let result = playGame(playerChoice, computerChoice);
-		// console.log(result);
+
+		// Update UI based on game result
 		if (result === "win") {
 			playerScore++;
 			document.getElementById("youWin").innerText = "YOU WIN";
@@ -54,8 +51,11 @@ function clickHandler(event) {
 			document.getElementById("concentricCircleMywin").style.display = "none";
 			document.getElementById("concentricCircleComputerWin").style.display = "none";
 		}
+
+		// Update scores and UI
 		newScoreAfterPlay();
 
+		// Update player and computer choices displayed
 		document.getElementById("maiddleDiv").style.display = "none";
 		if (ele.id === "imageIcons") {
 			ele = ele.parentNode;
@@ -71,57 +71,80 @@ function clickHandler(event) {
 		var img = document.getElementById("thirdPlayingDivImage");
 		var ele1 = document.getElementById("thirdPlayingDiv");
 
+		// Display computer's choice
 		if (computerChoice == "rock") {
 			var divElement = document.getElementById("cicle1");
-			var styles = window.getComputedStyle(divElement);
-			var border = styles.getPropertyValue("border");
-			var imgElement =
-				divElement.tagName === "IMG" ? divElement : divElement.querySelector("img");
-			img.src = imgElement.src;
-			ele1.style.border = border;
 		} else if (computerChoice == "paper") {
 			var divElement = document.getElementById("cicle3");
-			var styles = window.getComputedStyle(divElement);
-			var border = styles.getPropertyValue("border");
-			var imgElement =
-				divElement.tagName === "IMG" ? divElement : divElement.querySelector("img");
-			img.src = imgElement.src;
-			ele1.style.border = border;
 		} else {
 			var divElement = document.getElementById("cicle2");
-			var styles = window.getComputedStyle(divElement);
-			var border = styles.getPropertyValue("border");
-			var imgElement =
-				divElement.tagName === "IMG" ? divElement : divElement.querySelector("img");
-			img.src = imgElement.src;
-			ele1.style.border = border;
 		}
+		var styles = window.getComputedStyle(divElement);
+		var border = styles.getPropertyValue("border");
+		var imgElement = divElement.tagName === "IMG" ? divElement : divElement.querySelector("img");
+		img.src = imgElement.src;
+		ele1.style.border = border;
 
 		document.getElementById("playingDiv").style.display = "flex";
 
+		// Check if either player or computer has won
 		if (playerScore === 15 || computerScore === 15) {
 			showWinner(playerScore === 15 ? "YOU" : "COMPUTER");
 		}
 	}
 }
 
+// Function to display winner on result page
 function showWinner(winner) {
 	document.getElementById("resultPage").style.display = "block";
 	document.getElementById("mainPage").style.display = "none";
 	document.getElementById("youWonGame").innerHTML = `${winner} WON THE GAME!`;
-	// document.getElementById("youWonGame").style.marginLeft = "70px";
 	document.getElementById("next").style.display = "none";
+
+	// Reset scores and remove from localStorage
 	playerScore = 0;
 	computerScore = 0;
-	localStorage.removeItem("playerScore");
-	localStorage.removeItem("computerScore");
+	localStorage.removeItem("player_score");
+	localStorage.removeItem("computer_score");
 	newScoreAfterPlay();
 }
 
-function handleCancelRuleCard() {
-	// alert("clicked");
-	var ele = document.getElementById("mainRuleCard");
+// Function to handle 'Next' button click
+function handleNextPage() {
+	showWinner(playerScore > computerScore ? "YOU" : "COMPUTER");
+}
 
+// Function to update scores displayed on UI and in localStorage
+function newScoreAfterPlay() {
+	document.getElementById("player_score").innerText = `${playerScore}`;
+	document.getElementById("computer_score").innerText = `${computerScore}`;
+	localStorage.setItem("player_score", playerScore);
+	localStorage.setItem("computer_score", computerScore);
+}
+
+// Event listener for 'Play Again' button on result page
+document.getElementById("playAgain").addEventListener("click", function () {
+	document.getElementById("resultPage").style.display = "none";
+	document.getElementById("maiddleDiv").style.display = "flex";
+	document.getElementById("playingDiv").style.display = "none";
+	document.getElementById("concentricCircleMywin").style.display = "none";
+	document.getElementById("concentricCircleComputerWin").style.display = "none";
+});
+
+// Event listener for 'Play Again' button on result page (lower button)
+document.getElementById("playAgainLower").addEventListener("click", function () {
+	document.getElementById("resultPage").style.display = "none";
+	document.getElementById("maiddleDiv").style.display = "flex";
+	document.getElementById("mainPage").style.display = "block";
+	document.getElementById("concentricCircleMywin").style.display = "none";
+	document.getElementById("concentricCircleComputerWin").style.display = "none";
+	document.getElementById("playingDiv").style.display = "none";
+	document.getElementById("next").style.display = "block";
+});
+
+// Function to toggle display of rules card
+function handleCancelRuleCard() {
+	var ele = document.getElementById("mainRuleCard");
 	if (ele.style.display == "block" || ele.style.display == "flex") {
 		ele.style.display = "none";
 	} else {
@@ -129,6 +152,7 @@ function handleCancelRuleCard() {
 	}
 }
 
+// Function to determine game outcome based on player and computer choices
 function playGame(playerSelection, computerSelection) {
 	if (playerSelection === computerSelection) {
 		return "draw";
@@ -142,33 +166,6 @@ function playGame(playerSelection, computerSelection) {
 	}
 	return "lose";
 }
+
+// Initial call to update scores on UI
 newScoreAfterPlay();
-
-function newScoreAfterPlay() {
-	document.getElementById("player_score").innerText = `${playerScore}`;
-	document.getElementById("computer_score").innerText = `${computerScore}`;
-}
-
-document.getElementById("playAgain").addEventListener("click", function () {
-	//console.log("clicked");
-	document.getElementById("resultPage").style.display = "none";
-	document.getElementById("maiddleDiv").style.display = "flex";
-	document.getElementById("playingDiv").style.display = "none";
-	document.getElementById("concentricCircleMywin").style.display = "none";
-	document.getElementById("concentricCircleComputerWin").style.display = "none";
-});
-
-document.getElementById("playAgainLower").addEventListener("click", function () {
-	document.getElementById("resultPage").style.display = "none";
-	document.getElementById("maiddleDiv").style.display = "flex";
-	document.getElementById("mainPage").style.display = "block";
-	document.getElementById("concentricCircleMywin").style.display = "none";
-	document.getElementById("concentricCircleComputerWin").style.display = "none";
-	document.getElementById("playingDiv").style.display = "none";
-	document.getElementById("next").style.display = "block";
-	document.getElementById("next").style.display = "none";
-});
-
-function handleNextPage() {
-	showWinner(playerScore > computerScore ? "YOU" : "COMPUTER");
-}
